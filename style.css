@@ -1,111 +1,91 @@
-/* الخلفية الأساسية والتنسيق العام */
+/* تنسيق الخلفية الأساسي */
 body {
-    font-family: 'Poppins', sans-serif; /* خط حديث وجميل */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #f0e6ff 0%, #d8c4f0 100%); 
-    transition: background-color 1s ease-in-out;
-    overflow: hidden; /* لمنع ظهور شريط التمرير بسبب القلوب الطائرة */
+    background-color: #f0f0f0; /* لون خلفية فاتح */
+    font-family: Arial, sans-serif;
 }
 
-/* تنسيق شاشة الدخول */
-#login-screen {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    transition: opacity 0.5s; 
-}
-
-/* تنسيقات المدخلات والأزرار كما هي... */
-.login-container h1 { color: #4a235a; margin-bottom: 10px; }
-#passwordInput { width: 100%; padding: 12px; margin: 15px 0; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; transition: border-color 0.3s; }
-#passwordInput:focus { border-color: #7d3c98; outline: none; }
-button { background-color: #7d3c98; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; transition: background-color 0.3s, transform 0.2s; }
-button:hover { background-color: #4a235a; transform: translateY(-2px); }
-.error-text { color: #e74c3c; margin-top: 15px; }
-.hidden { display: none !important; }
-
-/* --- تأثير الرسالة القوية والاحتفالية --- */
-
-#secret-content {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
+/* الحاوية الرئيسية للأنيميشن */
+.animation-container {
+    position: relative; /* مهم لوضع النص فوق القلب */
+    display: flex;
     justify-content: center;
-    text-align: center;
-    position: relative; 
-    transition: opacity 1s;
+    align-items: center;
 }
 
-/* 1. تأثير القلب العملاق (يتوهج وينبض) */
-.heart-container {
-    font-size: 10vw; 
-    position: relative;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.7)); /* توهج */
-    animation: heartBeat 2s infinite ease-in-out;
-}
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* 2. تأثير الكتابة القوي (Typewriter Effect) */
-.love-message {
-    color: #fff; /* النص الأبيض يبرز على الخلفية الوردية الجديدة */
-    background: #a50036; /* شريط خلفي قوي */
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 3.5vw; 
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    overflow: hidden; 
-    width: 0; 
-    white-space: nowrap; 
-    animation: 
-        typing 4s steps(22) forwards, /* 22 حرفاً في 4 ثوانٍ */
-        blink 0.75s step-end infinite; /* مؤشر الكتابة الوامض */
-}
-
-/* إزالة مؤشر الكتابة بعد الانتهاء */
-.love-message:after {
-    content: "|";
+/* النص الذي يظهر فوق القلب */
+.text-overlay {
     position: absolute;
-    right: 20px;
-    animation: blink 0.75s step-end infinite;
-}
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-@keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #fff; }
-}
-/* إخفاء المؤشر بعد اكتمال الكتابة */
-.love-message[style*="width: 100%"]::after {
-    animation: none;
-    border-color: transparent;
+    top: -40px; /* اضبط هذا الرقم لتحريك النص للأعلى أو الأسفل */
+    font-size: 20px;
+    font-weight: bold;
+    color: #e91e63; /* لون نص يتناسب مع القلب */
+    z-index: 10; /* لضمان ظهور النص فوق القلب */
 }
 
+/* ---------------------------------- */
+/* تصميم شكل القلب */
+/* ---------------------------------- */
 
-/* --- تأثير القلوب الكثيفة المتصاعدة (Particle Effect) --- */
 .heart {
-    position: absolute;
-    font-size: 1em; /* القلوب الصغيرة */
-    animation: floatUp ease-in infinite;
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63; /* لون القلب (أحمر وردي) */
+    position: relative;
+    transform: rotate(-45deg); /* تدوير 45 درجة لعمل شكل القلب */
+    box-shadow: 0 10px 90px rgba(233, 30, 99, 0.7); /* ظل للقلب */
+    
+    /* تطبيق أنيميشن النبض */
+    animation: heart-beat 1s infinite;
 }
 
-@keyframes floatUp {
-    0% { transform: translateY(0) scale(0); opacity: 0.1; }
-    5% { transform: scale(1); opacity: 1; }
-    95% { opacity: 0.5; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+/* إنشاء الدائرة العلوية اليسرى */
+.heart::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63;
+    border-radius: 50%;
+}
+
+/* إنشاء الدائرة العلوية اليمنى */
+.heart::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63;
+    border-radius: 50%;
+}
+
+
+/* ---------------------------------- */
+/* حركة النبض (Keyframes) */
+/* ---------------------------------- */
+
+@keyframes heart-beat {
+    0% {
+        transform: rotate(-45deg) scale(1);
+    }
+    25% {
+        transform: rotate(-45deg) scale(1.1); /* يتضخم قليلاً */
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.2); /* يصل للحد الأقصى للتضخم */
+    }
+    75% {
+        transform: rotate(-45deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1); /* يعود للحجم الأصلي */
+    }
 }

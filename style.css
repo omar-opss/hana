@@ -1,0 +1,146 @@
+/* الخلفية الأساسية والتنسيق العام */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* خلفية متدرجة جذابة (يمكنك تغيير الألوان) */
+    background: linear-gradient(135deg, #f0e6ff 0%, #d8c4f0 100%); 
+    transition: background-color 1s ease-in-out;
+}
+
+/* تنسيق شاشة الدخول */
+#login-screen {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.login-container h1 {
+    color: #4a235a;
+    margin-bottom: 10px;
+}
+
+/* تنسيق حقل الإدخال */
+#passwordInput {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#passwordInput:focus {
+    border-color: #7d3c98;
+    outline: none;
+}
+
+/* تنسيق زر الدخول */
+button {
+    background-color: #7d3c98;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #4a235a;
+    transform: translateY(-2px);
+}
+
+.error-text {
+    color: #e74c3c;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* تنسيق رسالة الحب (الاحترافية والأنيقة) */
+#secret-content {
+    text-align: center;
+    color: #4a235a; 
+    font-size: 5vw; /* حجم متجاوب */
+    font-weight: 800;
+    letter-spacing: 5px;
+    overflow: hidden; 
+    perspective: 1000px; 
+    position: relative; /* مهم لوضع القلوب بشكل مطلق */
+}
+
+/* الرسوم المتحركة الاحترافية لتأثير الظهور (Heartbeat + 3D Flip) */
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes charFlip {
+    0% { transform: rotateY(-90deg); opacity: 0; }
+    100% { transform: rotateY(0deg); opacity: 1; }
+}
+
+.love-message {
+    display: inline-block;
+    animation: heartBeat 4s infinite; 
+}
+
+.love-message span {
+    display: inline-block;
+    opacity: 0;
+    animation: charFlip 0.8s ease-out forwards; 
+    animation-delay: calc(var(--delay) * 0.08s); 
+}
+
+/* --- تنسيق وتأثير القلوب الجديدة --- */
+
+.heart-icon {
+    position: absolute;
+    font-size: 3em; 
+    opacity: 0;
+    /* يتم تطبيق حركة النبض والارتفاع بعد ظهور الرسالة */
+    animation: floatUp 6s ease-out forwards; 
+}
+
+@keyframes floatUp {
+    0% { opacity: 0; transform: translateY(100%); }
+    20% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-300%); }
+}
+
+/* تحديد موقع وتأخير القلوب لتبدو عشوائية */
+
+.icon-1 {
+    top: 50%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.icon-2 {
+    top: 50%;
+    right: 15%;
+    animation-delay: 3s; 
+    font-size: 4em;
+}
+
+.icon-3 {
+    top: 70%;
+    left: 25%;
+    animation-delay: 4.5s; 
+    font-size: 2.5em;
+}
+
+/* لا تحتاج لتغيير ملف script.js */

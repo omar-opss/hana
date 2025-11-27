@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة خاصة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-container">
+            <h1>أهلاً بك</h1>
+            <p>فضلاً، أدخل كلمة المرور للمتابعة:</p>
+            <input type="password" id="passwordInput" placeholder="كلمة المرور">
+            <button onclick="checkPassword()">دخول</button>
+            <p id="error-message" class="error-text"></p>
+        </div>
+    </div>
+
+    <div id="secret-content" class="hidden">
+        <span class="heart-icon icon-1">💖</span>
+        
+        <h1 class="love-message">
+            <span class="char-delay" style="--delay: 0;">L</span>
+            <span class="char-delay" style="--delay: 1;">o</span>
+            <span class="char-delay" style="--delay: 2;">v</span>
+            <span class="char-delay" style="--delay: 3;">e</span>
+            <span class="char-delay" style="--delay: 4;"> </span>
+            <span class="char-delay" style="--delay: 5;">Y</span>
+            <span class="char-delay" style="--delay: 6;">o</span>
+            <span class="char-delay" style="--delay: 7;">u</span>
+            <span class="char-delay" style="--delay: 8;"> </span>
+            <span class="char-delay" style="--delay: 9;">H</span>
+            <span class="char-delay" style="--delay: 10;">a</span>
+            <span class="char-delay" style="--delay: 11;">n</span>
+            <span class="char-delay" style="--delay: 12;">o</span>
+            <span class="char-delay" style="--delay: 13;">n</span>
+            <span class="char-delay" style="--delay: 14;">t</span>
+            <span class="char-delay" style="--delay: 15;">y</span>
+            <span class="char-delay" style="--delay: 16;">y</span>
+            <span class="char-delay" style="--delay: 17;">y</span>
+        </h1>
+        
+        <span class="heart-icon icon-2">❤️</span>
+        <span class="heart-icon icon-3">✨</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

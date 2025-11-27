@@ -1,6 +1,6 @@
 /* الخلفية الأساسية والتنسيق العام */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif; /* خط حديث وجميل */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,6 +8,7 @@ body {
     margin: 0;
     background: linear-gradient(135deg, #f0e6ff 0%, #d8c4f0 100%); 
     transition: background-color 1s ease-in-out;
+    overflow: hidden; /* لمنع ظهور شريط التمرير بسبب القلوب الطائرة */
 }
 
 /* تنسيق شاشة الدخول */
@@ -15,102 +16,96 @@ body {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
     max-width: 400px;
     width: 90%;
-    transition: opacity 0.5s; /* لتأثير التلاشي عند الدخول */
+    transition: opacity 0.5s; 
 }
 
-/* باقي تنسيقات شاشة الدخول... (دون تغيير) */
+/* تنسيقات المدخلات والأزرار كما هي... */
 .login-container h1 { color: #4a235a; margin-bottom: 10px; }
 #passwordInput { width: 100%; padding: 12px; margin: 15px 0; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; transition: border-color 0.3s; }
 #passwordInput:focus { border-color: #7d3c98; outline: none; }
 button { background-color: #7d3c98; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; transition: background-color 0.3s, transform 0.2s; }
 button:hover { background-color: #4a235a; transform: translateY(-2px); }
 .error-text { color: #e74c3c; margin-top: 15px; }
+.hidden { display: none !important; }
 
-.hidden {
-    display: none !important; /* ضمان الإخفاء */
-}
+/* --- تأثير الرسالة القوية والاحتفالية --- */
 
-/* تنسيق رسالة الحب (الاحترافية والأنيقة) */
 #secret-content {
-    display: flex; /* لتنظيم الرسالة والقلوب في المنتصف */
+    display: flex; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #a50036; /* لون أحمر/وردي قوي */
-    font-size: 5vw; 
-    font-weight: 900;
-    letter-spacing: 5px;
     position: relative; 
     transition: opacity 1s;
 }
 
-/* --- الرسوم المتحركة القوية لظهور الأحرف (Bounce/Jump) --- */
-@keyframes bounceIn {
-    0% { transform: scale(0.1) translateY(-100px); opacity: 0; }
-    60% { transform: scale(1.1) translateY(10px); opacity: 1; }
-    100% { transform: scale(1) translateY(0); }
+/* 1. تأثير القلب العملاق (يتوهج وينبض) */
+.heart-container {
+    font-size: 10vw; 
+    position: relative;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.7)); /* توهج */
+    animation: heartBeat 2s infinite ease-in-out;
 }
-
 @keyframes heartBeat {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
+    50% { transform: scale(1.1); }
 }
 
+/* 2. تأثير الكتابة القوي (Typewriter Effect) */
 .love-message {
-    display: inline-block;
-    animation: heartBeat 4s infinite; 
+    color: #fff; /* النص الأبيض يبرز على الخلفية الوردية الجديدة */
+    background: #a50036; /* شريط خلفي قوي */
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 3.5vw; 
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    overflow: hidden; 
+    width: 0; 
+    white-space: nowrap; 
+    animation: 
+        typing 4s steps(22) forwards, /* 22 حرفاً في 4 ثوانٍ */
+        blink 0.75s step-end infinite; /* مؤشر الكتابة الوامض */
 }
 
-.love-message span {
-    display: inline-block;
-    opacity: 0;
-    /* تطبيق تأثير القفز */
-    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; 
-    animation-delay: calc(var(--delay) * 0.07s); /* زيادة سرعة الظهور */
-}
-
-/* --- تنسيق وتأثير القلوب القوي (Floating & Pulsing) --- */
-
-.heart-icon {
+/* إزالة مؤشر الكتابة بعد الانتهاء */
+.love-message:after {
+    content: "|";
     position: absolute;
-    font-size: 4em; 
-    opacity: 0;
-    animation: pulseFloat 4s infinite ease-in-out;
+    right: 20px;
+    animation: blink 0.75s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #fff; }
+}
+/* إخفاء المؤشر بعد اكتمال الكتابة */
+.love-message[style*="width: 100%"]::after {
+    animation: none;
+    border-color: transparent;
 }
 
-@keyframes pulseFloat {
-    0% { opacity: 0; transform: translateY(0) scale(1); }
-    15% { opacity: 1; transform: translateY(-20px) scale(1.1); } /* يظهر ويومض */
-    50% { opacity: 0.8; transform: translateY(-50px) scale(1); }
-    100% { opacity: 0; transform: translateY(-100px) scale(0.8); } /* يتلاشى للأعلى */
+
+/* --- تأثير القلوب الكثيفة المتصاعدة (Particle Effect) --- */
+.heart {
+    position: absolute;
+    font-size: 1em; /* القلوب الصغيرة */
+    animation: floatUp ease-in infinite;
 }
 
-/* تحديد موقع وتأخير القلوب لتبدو عشوائية */
-
-.icon-1 {
-    top: 50%;
-    left: 20%;
-    animation-delay: 1.5s;
-    font-size: 3em;
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0); opacity: 0.1; }
+    5% { transform: scale(1); opacity: 1; }
+    95% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
 }
-
-.icon-2 {
-    top: 50%;
-    right: 25%;
-    animation-delay: 2.5s; 
-    font-size: 5em;
-}
-
-.icon-3 {
-    top: 70%;
-    left: 10%;
-    animation-delay: 3.8s; 
-    font-size: 2.8em;
-}
-
-/* لا تحتاج لتغيير ملف script.js */

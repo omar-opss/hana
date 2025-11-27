@@ -1,5 +1,5 @@
 // الكلمة الصحيحة (يمكنك تغييرها هنا)
-const CORRECT_PASSWORD = 'hanontyyy';
+const CORRECT_PASSWORD = '1152009';
 
 function checkPassword() {
     const enteredPassword = document.getElementById('passwordInput').value.trim();

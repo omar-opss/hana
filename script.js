@@ -1,5 +1,5 @@
 // تأكد من أن هذا الكود موضوع قبل وسم </body>
-const CORRECT_PASSWORD = "123"; // **** لا تنسى تغيير كلمة المرور هنا ****
+const CORRECT_PASSWORD = "1152009"; // **** لا تنسى تغيير كلمة المرور هنا ****
 
 // إضافة خاصية الاستماع لزر Enter
 document.getElementById('password-input').addEventListener('keypress', function(e) {

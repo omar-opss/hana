@@ -5,9 +5,10 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #1a1a1a; /* خلفية داكنة جداً */
+    background-color: #1a1a1a;
     font-family: 'Arial', sans-serif;
     color: #f0f0f0;
+    overflow: hidden; /* عشان مايظهرش شريط تمرير لو الاسم طلع بره */
 }
 
 /* إخفاء الشاشة غير النشطة */
@@ -26,7 +27,7 @@ body {
 
 /* تنسيق شاشة الباسورد الأبسط */
 #password-screen {
-    background-color: transparent; /* خلفية شفافة */
+    background-color: transparent;
     padding: 30px;
     border-radius: 10px;
 }
@@ -34,7 +35,7 @@ body {
 .welcome-text {
     font-size: 28px;
     margin-bottom: 25px;
-    color: #ffb3c1; /* لون وردي فاتح */
+    color: #ffb3c1;
     text-shadow: 0 0 5px rgba(255, 179, 193, 0.5);
 }
 
@@ -42,9 +43,9 @@ body {
     padding: 12px;
     font-size: 18px;
     margin: 15px 0;
-    border-radius: 25px; /* حواف مستديرة */
-    border: 2px solid #e91e63; /* حدود وردية */
-    background-color: #333; /* خلفية داكنة للحقل */
+    border-radius: 25px;
+    border: 2px solid #e91e63;
+    background-color: #333;
     color: #f0f0f0;
     text-align: center;
     width: 280px;
@@ -52,7 +53,7 @@ body {
     transition: border-color 0.3s;
 }
 #password-input:focus {
-    border-color: #ffb3c1; /* إضاءة وردية عند التركيز */
+    border-color: #ffb3c1;
 }
 
 button {
@@ -79,31 +80,34 @@ button:hover {
 }
 
 /* ---------------------------------- */
-/* تنسيق الأنميشن (القلب) - لم يتغير كثيراً */
+/* تعديلات القلب والاسم */
 /* ---------------------------------- */
 .animation-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;
+    /* (1) زودنا المسافة دي عشان ننزل القلب لتحت ونوسع مكان للاسم فوق */
+    margin-top: 250px; 
 }
 
 .text-overlay {
     position: absolute;
-    /* عدل هنا: كل ما الرقم السالب يزيد، الاسم يطلع لفوق أكتر */
-    top: -160px; 
+    /* (2) الرقم ده بيرفع الاسم لفوق - كل ما تزود السالب يطلع اكتر */
+    top: -200px; 
     
-    /* عدل هنا: عشان تكبر الخط */
-    font-size: 80px; 
+    /* (3) حجم الخط كبير وواضح */
+    font-size: 90px; 
     
     font-weight: bold;
     color: #e91e63;
     z-index: 10;
-    text-shadow: 0 0 15px rgba(233, 30, 99, 1);
+    text-shadow: 0 0 20px rgba(233, 30, 99, 1);
     
-    /* إضافة بسيطة عشان تضمن إن الاسم يفضل في النص بالظبط */
-    width: 100%; 
+    /* ضمان التوسيط */
+    width: 100%;
+    text-align: center;
+    pointer-events: none; /* عشان مايغطيش على القلب لو حبيت تدوس عليه */
 }
 
 .heart {
@@ -138,6 +142,11 @@ button:hover {
 @keyframes heart-beat {
     0%, 100% {
         transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+}
     }
     50% {
         transform: rotate(-45deg) scale(1.2);

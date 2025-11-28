@@ -91,12 +91,19 @@ button:hover {
 
 .text-overlay {
     position: absolute;
-    top: -80px;
-    font-size: 50px; /* أكبر قليلاً */
+    /* عدل هنا: كل ما الرقم السالب يزيد، الاسم يطلع لفوق أكتر */
+    top: -160px; 
+    
+    /* عدل هنا: عشان تكبر الخط */
+    font-size: 80px; 
+    
     font-weight: bold;
     color: #e91e63;
     z-index: 10;
-    text-shadow: 0 0 15px rgba(233, 30, 99, 1); /* ظل أوضح */
+    text-shadow: 0 0 15px rgba(233, 30, 99, 1);
+    
+    /* إضافة بسيطة عشان تضمن إن الاسم يفضل في النص بالظبط */
+    width: 100%; 
 }
 
 .heart {

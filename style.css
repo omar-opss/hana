@@ -5,7 +5,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #1e1e1e; /* خلفية داكنة */
+    background-color: #1a1a1a; /* خلفية داكنة جداً */
     font-family: 'Arial', sans-serif;
     color: #f0f0f0;
 }
@@ -15,81 +15,97 @@ body {
     display: none;
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 .screen.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* تنسيق شاشة الباسورد */
+/* تنسيق شاشة الباسورد الأبسط */
 #password-screen {
-    background-color: #333;
-    padding: 40px;
+    background-color: transparent; /* خلفية شفافة */
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #ffb3c1; /* لون وردي فاتح */
+    text-shadow: 0 0 5px rgba(255, 179, 193, 0.5);
 }
 
 #password-input {
-    padding: 10px;
+    padding: 12px;
     font-size: 18px;
     margin: 15px 0;
-    border-radius: 5px;
-    border: none;
-    display: block;
-    width: 250px;
+    border-radius: 25px; /* حواف مستديرة */
+    border: 2px solid #e91e63; /* حدود وردية */
+    background-color: #333; /* خلفية داكنة للحقل */
+    color: #f0f0f0;
     text-align: center;
+    width: 280px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+#password-input:focus {
+    border-color: #ffb3c1; /* إضاءة وردية عند التركيز */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 30px;
     font-size: 18px;
     background-color: #e91e63;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #c2185b;
+    transform: translateY(-2px);
 }
 
 .error-text {
     color: #ff5252;
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: bold;
 }
 
 /* ---------------------------------- */
-/* تنسيق الأنميشن (القلب) */
+/* تنسيق الأنميشن (القلب) - لم يتغير كثيراً */
 /* ---------------------------------- */
-
 .animation-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px; /* لرفع القلب قليلاً */
+    margin-top: 100px;
 }
 
 .text-overlay {
     position: absolute;
-    top: -60px; /* أعلى من القلب */
-    font-size: 30px;
+    top: -60px;
+    font-size: 35px; /* أكبر قليلاً */
     font-weight: bold;
     color: #e91e63;
     z-index: 10;
-    /* لإضافة تأثير بسيط للنص */
-    text-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
+    text-shadow: 0 0 15px rgba(233, 30, 99, 1); /* ظل أوضح */
 }
 
 .heart {
-    width: 120px; /* أكبر قليلاً */
+    width: 120px;
     height: 120px;
     background-color: #e91e63;
     position: relative;
     transform: rotate(-45deg);
-    box-shadow: 0 0 50px rgba(233, 30, 99, 0.9); /* ظل أقوى */
+    box-shadow: 0 0 60px rgba(233, 30, 99, 0.9);
     animation: heart-beat 1s infinite ease-in-out;
 }
 
@@ -112,7 +128,6 @@ button:hover {
     right: -60px;
 }
 
-/* حركة النبض (Keyframes) */
 @keyframes heart-beat {
     0%, 100% {
         transform: rotate(-45deg) scale(1);
@@ -120,5 +135,4 @@ button:hover {
     50% {
         transform: rotate(-45deg) scale(1.2);
     }
-}
 }

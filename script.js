@@ -1,4 +1,12 @@
-const CORRECT_PASSWORD = "1152009"; // **** قم بتغيير كلمة المرور هذه ****
+// تأكد من أن هذا الكود موضوع قبل وسم </body>
+const CORRECT_PASSWORD = "123"; // **** لا تنسى تغيير كلمة المرور هنا ****
+
+// إضافة خاصية الاستماع لزر Enter
+document.getElementById('password-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        checkPassword();
+    }
+});
 
 function checkPassword() {
     const input = document.getElementById('password-input').value;
@@ -9,17 +17,17 @@ function checkPassword() {
     if (input === CORRECT_PASSWORD) {
         // كلمة المرور صحيحة
         errorMsg.textContent = "تم بنجاح! جاري الدخول...";
-        errorMsg.style.color = "#4CAF50"; // لون أخضر
+        errorMsg.style.color = "#4CAF50";
 
-        // إخفاء شاشة الباسورد بعد فترة (مثل 1.5 ثانية)
+        // إخفاء شاشة الباسورد وجعل الأنميشن يظهر بعد 1.5 ثانية
         setTimeout(() => {
             passwordScreen.classList.remove('active');
             animationScreen.classList.add('active');
-        }, 1500); // 1500 مللي ثانية = 1.5 ثانية
+        }, 1500); // 1.5 ثانية انتظار
         
     } else {
         // كلمة المرور خاطئة
         errorMsg.textContent = "كلمة المرور غير صحيحة، حاول مرة أخرى.";
-        errorMsg.style.color = "#ff5252"; // لون أحمر
+        errorMsg.style.color = "#ff5252";
     }
 }

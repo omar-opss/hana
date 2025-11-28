@@ -16,7 +16,7 @@
             background-color: #1a1a1a;
             font-family: 'Arial', sans-serif;
             color: #f0f0f0;
-            overflow: hidden; /* عشان لو الاسم طلع بره مايعملش سكرول */
+            overflow: hidden;
         }
 
         /* إخفاء الشاشة غير النشطة */
@@ -74,7 +74,7 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.1s;
             margin-top: 10px;
-        } /* <--- القوس ده كان ناقص في كودك وهو سبب المشكلة */
+        }
 
         button:hover {
             background-color: #c2185b;
@@ -87,28 +87,29 @@
             font-weight: bold;
         }
 
-        /* تنسيقات القلب والاسم */
+        /* --- بداية التعديلات المهمة --- */
         .animation-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* نزلنا القلب لتحت شوية عشان نوسع مكان للاسم فوق */
-            margin-top: 200px; 
+            margin-top: 200px;
         }
 
         .text-overlay {
             position: absolute;
-            /* رفعنا الاسم لفوق خالص */
-            top: -180px; 
-            /* كبرنا الخط جداً */
-            font-size: 80px; 
+            /* طريقة التوسيط الجديدة والمضمونة */
+            left: 50%;
+            transform: translateX(-50%); 
+            white-space: nowrap; /* يمنع الكلام ينزل سطرين */
+            
+            top: -200px; /* مكان الاسم للكمبيوتر */
+            font-size: 90px; /* حجم الخط للكمبيوتر */
+            
             font-weight: bold;
             color: #e91e63;
             z-index: 10;
             text-shadow: 0 0 20px rgba(233, 30, 99, 1);
-            width: 100%;
-            text-align: center;
         }
 
         .heart {
@@ -116,7 +117,7 @@
             height: 120px;
             background-color: #e91e63;
             position: relative;
-            transform: rotate(-45deg);
+            transform: rotate(-45deg); /* التدوير الأساسي للقلب */
             box-shadow: 0 0 60px rgba(233, 30, 99, 0.9);
             animation: heart-beat 1s infinite ease-in-out;
         }
@@ -148,6 +149,17 @@
                 transform: rotate(-45deg) scale(1.2);
             }
         }
+
+        /* --- كود خاص للموبايل فقط --- */
+        @media (max-width: 600px) {
+            .text-overlay {
+                font-size: 50px; /* تصغير الخط عشان يناسب شاشة الموبايل */
+                top: -120px;    /* تقريب الاسم شوية من القلب في الموبايل */
+            }
+            .animation-container {
+                margin-top: 150px; /* ضبط ارتفاع القلب في الموبايل */
+            }
+        }
     </style>
 </head>
 <body>
@@ -167,7 +179,6 @@
     </div>
 
     <script>
-        // **** كلمة المرور الصحيحة ****
         const CORRECT_PASSWORD = "123"; 
 
         document.getElementById('password-input').addEventListener('keypress', function(e) {

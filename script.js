@@ -23,7 +23,7 @@ function checkPassword() {
         setTimeout(() => {
             passwordScreen.classList.remove('active');
             animationScreen.classList.add('active');
-        }, 1500); // 1.5 ثانية انتظار
+        }, 1500); // 0.5 ثانية انتظار
         
     } else {
         // كلمة المرور خاطئة

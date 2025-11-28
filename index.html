@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة دخول خاصة</title>
+    
+    <style>
+        /* تنسيق الشاشات الأساسي */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            font-family: 'Arial', sans-serif;
+            color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        /* إخفاء الشاشة غير النشطة */
+        .screen {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* تنسيق شاشة الباسورد */
+        #password-screen {
+            background-color: transparent;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .welcome-text {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #ffb3c1;
+            text-shadow: 0 0 5px rgba(255, 179, 193, 0.5);
+        }
+
+        #password-input {
+            padding: 12px;
+            font-size: 18px;
+            margin: 15px 0;
+            border-radius: 25px;
+            border: 2px solid #e91e63;
+            background-color: #333;
+            color: #f0f0f0;
+            text-align: center;
+            width: 280px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #password-input:focus {
+            border-color: #ffb3c1;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 18px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .error-text {
+            color: #ff5252;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* --- بداية التعديلات المهمة --- */
+        .animation-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 200px;
+        }
+
+        .text-overlay {
+            position: absolute;
+            /* طريقة التوسيط الجديدة والمضمونة */
+            left: 50%;
+            transform: translateX(-50%); 
+            white-space: nowrap; /* يمنع الكلام ينزل سطرين */
+            
+            top: -200px; /* مكان الاسم للكمبيوتر */
+            font-size: 90px; /* حجم الخط للكمبيوتر */
+            
+            font-weight: bold;
+            color: #e91e63;
+            z-index: 10;
+            text-shadow: 0 0 20px rgba(233, 30, 99, 1);
+        }
+
+        .heart {
+            width: 120px;
+            height: 120px;
+            background-color: #e91e63;
+            position: relative;
+            transform: rotate(-45deg); /* التدوير الأساسي للقلب */
+            box-shadow: 0 0 60px rgba(233, 30, 99, 0.9);
+            animation: heart-beat 1s infinite ease-in-out;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: #e91e63;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -60px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            right: -60px;
+        }
+
+        @keyframes heart-beat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.2);
+            }
+        }
+
+        /* --- كود خاص للموبايل فقط --- */
+        @media (max-width: 600px) {
+            .text-overlay {
+                font-size: 50px; /* تصغير الخط عشان يناسب شاشة الموبايل */
+                top: -120px;    /* تقريب الاسم شوية من القلب في الموبايل */
+            }
+            .animation-container {
+                margin-top: 150px; /* ضبط ارتفاع القلب في الموبايل */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="password-screen" class="screen active">
+        <h1 class="welcome-text">أدخل كلمة المرور:</h1>
+        <input type="password" id="password-input" placeholder="كلمة السر...">
+        <button onclick="checkPassword()">دخول</button>
+        <p id="error-message" class="error-text"></p>
+    </div>
+
+<div id="animation-screen" class="screen">
+        <div class="animation-container">
+            <div class="text-overlay">hanontyyy</div>
+            <div class="heart"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

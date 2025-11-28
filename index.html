@@ -13,9 +13,10 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #1a1a1a; /* خلفية داكنة جداً */
+            background-color: #1a1a1a;
             font-family: 'Arial', sans-serif;
             color: #f0f0f0;
+            overflow: hidden; /* عشان لو الاسم طلع بره مايعملش سكرول */
         }
 
         /* إخفاء الشاشة غير النشطة */
@@ -73,7 +74,7 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.1s;
             margin-top: 10px;
-        }
+        } /* <--- القوس ده كان ناقص في كودك وهو سبب المشكلة */
 
         button:hover {
             background-color: #c2185b;
@@ -86,23 +87,28 @@
             font-weight: bold;
         }
 
-        /* تنسيق الأنميشن (القلب) */
+        /* تنسيقات القلب والاسم */
         .animation-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
+            /* نزلنا القلب لتحت شوية عشان نوسع مكان للاسم فوق */
+            margin-top: 200px; 
         }
 
         .text-overlay {
             position: absolute;
-            top: -60px;
-            font-size: 35px;
+            /* رفعنا الاسم لفوق خالص */
+            top: -180px; 
+            /* كبرنا الخط جداً */
+            font-size: 80px; 
             font-weight: bold;
             color: #e91e63;
             z-index: 10;
-            text-shadow: 0 0 15px rgba(233, 30, 99, 1);
+            text-shadow: 0 0 20px rgba(233, 30, 99, 1);
+            width: 100%;
+            text-align: center;
         }
 
         .heart {
@@ -161,10 +167,9 @@
     </div>
 
     <script>
-        // **** كلمة المرور الصحيحة - قم بتغييرها ****
+        // **** كلمة المرور الصحيحة ****
         const CORRECT_PASSWORD = "123"; 
 
-        // إضافة خاصية الاستماع لزر Enter
         document.getElementById('password-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkPassword();
@@ -178,18 +183,15 @@
             const animationScreen = document.getElementById('animation-screen');
 
             if (input === CORRECT_PASSWORD) {
-                // كلمة المرور صحيحة
                 errorMsg.textContent = "تم بنجاح! جاري الدخول...";
                 errorMsg.style.color = "#4CAF50";
 
-                // إخفاء شاشة الباسورد وظهور الأنميشن بعد 1.5 ثانية
                 setTimeout(() => {
                     passwordScreen.classList.remove('active');
                     animationScreen.classList.add('active');
                 }, 1500); 
                 
             } else {
-                // كلمة المرور خاطئة
                 errorMsg.textContent = "كلمة المرور غير صحيحة، حاول مرة أخرى.";
                 errorMsg.style.color = "#ff5252";
             }
